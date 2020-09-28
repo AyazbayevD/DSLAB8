@@ -24,6 +24,7 @@ def send_message(pipe, pid, counter):
     return counter
 
 def recv_message(pipe, pid, counter):
+    counter[pid] += 1
     message, timestamp = pipe.recv()
     counter = calc_recv_timestamp(timestamp, counter)
     print('Message received at ' + str(pid) + local_time(counter))
